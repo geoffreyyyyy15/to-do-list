@@ -37,6 +37,7 @@
         public $task;
         public $task_id;
         protected $table_name;
+        public $con;
 
         function setTask($table_name, $task_id, $task) {
             $this->task = $task;
@@ -54,15 +55,24 @@
     }
     
     class RetrieveInfo extends AddList {
-
-        public function retrieve($table_name, $column_name, $param) {
-            $query = "SELECT * FROM $table_name WHERE $column_name = $param";
-        }
+        public function select($table_name)  
+        {  
+             $array = array();  
+             $query = "SELECT * FROM ".$table_name."";  
+             $result = mysqli_query($this->con, $query);  
+             while($row = mysqli_fetch_assoc($result))  
+             {  
+                  $array[] = $row;  
+             }  
+             return $array;  
+        }  
     }
 
 
     $retrive = new RetrieveInfo();
     $getId = new RetrieveInfo();
+
+    $retrive->select("todo");
 
     
 
