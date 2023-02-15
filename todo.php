@@ -54,11 +54,9 @@
     }
     
     class RetrieveInfo extends AddList {
-        function setInfo($table_name) {
-            $this->table_name = $table_name;
-        }
-        function getInfo() {
-            return "SELECT * FROM " . $this->table_name;
+
+        public function retrieve($table_name, $column_name, $param) {
+            $query = "SELECT * FROM $table_name WHERE $column_name = $param";
         }
     }
 
@@ -66,17 +64,7 @@
     $retrive = new RetrieveInfo();
     $getId = new RetrieveInfo();
 
-    $id = $getId->getId("1");
-
-
-
-    $sql = $retrive->getInfo("todo");
-
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $id);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $user = $result->fetch_assoc();
+    
 
 
     
