@@ -17,7 +17,21 @@
             align-items: center;
             justify-content: center;
         }
+        table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
 
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
     </style>
 <center><div class="container">
 <div class="card" style="width: 18rem;">
@@ -25,54 +39,54 @@
     <h5 class="card-title">To-Do list</h5>
     <h6 class="card-subtitle mb-2 text-muted">CRUD Table</h6>
 
-    <a class="btn btn-primary" href="">Add to List </a>
+    <a class="btn btn-primary" href="insert-remove/insert-task.php">Add to List </a>
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
+  <table>
+  <tr>
+    <th>Todo</th>
+    <th>Edit / Remove</th>
+    
+  </tr>
   
-
+ 
+   
+ 
     <?php
     include('config.php');
-    class AddList {
-        public $task;
-        public $task_id;
-        protected $table_name;
-        public $con;
-
-        function setTask($table_name, $task_id, $task) {
-            $this->task = $task;
-            $this->task_id = $task_id;
-            $this->table_name = $table_name;
-            
-        }
-        function getTask() {
-            return "INSERT INTO " . $this->table_name . "VALUES (" . $this->task . ")";
-        }
-        function getId($task_id) {
-            $this->task_id = $task_id;
-            return $this->task_id;
-        }
-    }
+  
     
-    class RetrieveInfo extends AddList {
+    class RetrieveInfo {
         public function select($table_name)  
         {  
-             $array = array();  
-             $query = "SELECT * FROM ".$table_name."";  
-             $result = mysqli_query($this->con, $query);  
-             while($row = mysqli_fetch_assoc($result))  
-             {  
-                  $array[] = $row;  
-             }  
-             return $array;  
-        }  
+          $c = "SELECT * FROM " . $table_name;
+          return $c;
+        }
+   
     }
-
+   
 
     $retrive = new RetrieveInfo();
     $getId = new RetrieveInfo();
 
-    $retrive->select("todo");
+    $query =  $retrive->select("todo");
+
+    $result = mysqli_query($conn, $query);
+
+   while($row = mysqli_fetch_array($result)){
+        $task1 = $row['task'];
+
+
+        echo  "
+        <tr>
+        
+        <td>$task1</td>
+        <td><a href='#' class='btn btn-success'>Edit</a> | <a href='#' class='btn btn-danger'>Remove</a></td>
+        
+        </tr>
+        ";
+   }
+
+
 
     
 
@@ -80,8 +94,8 @@
     
 
     ?>
-
-<p> <?php echo $user;  ?> </p>
+ </tr>
+</table>
   </div>
 
 </div>
