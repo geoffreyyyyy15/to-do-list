@@ -26,6 +26,7 @@ include("../config.php");
 
   <input type="text" class="form-control" placeholder="Input Task" aria-label="Username" aria-describedby="basic-addon1" name="task">
   <input type="submit" class="btn btn-primary" value="Add" name="add">
+  <a href="../todo.php" class="btn btn-warning">Back</a>
   </form>
 </div>
      
