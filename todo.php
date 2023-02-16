@@ -11,28 +11,7 @@
     <link href="style.css?v=7" rel="stylesheet">
 </head>
 <body>
-    <style>
-        .container {
-            margin: 50px;
-            align-items: center;
-            justify-content: center;
-        }
-        table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
 
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
-
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
-    </style>
 <center><div class="container">
 <div class="card" style="width: 18rem;">
   <div class="card-body">
@@ -64,23 +43,24 @@ tr:nth-child(even) {
    
     }
    
-
+  
+      
     $retrive = new RetrieveInfo();
     $getId = new RetrieveInfo();
 
     $query =  $retrive->select("todo");
-
-    $result = mysqli_query($conn, $query);
+    $result =  $conn->query($query);
 
    while($row = mysqli_fetch_array($result)){
         $task1 = $row['task'];
+        $id = $row['task_id'];
 
 
         echo  "
         <tr>
         
         <td>$task1</td>
-        <td><a href='#' class='btn btn-success'>Edit</a> | <a href='#' class='btn btn-danger'>Remove</a></td>
+        <td><a href='insert-remove/edit-task.php?taskId=$id&task=$task1' class='btn btn-success'>Edit</a> | <a href='insert-remove/remove-task.php?id=$id' class='btn btn-danger'>Remove</a></td>
         
         </tr>
         ";
