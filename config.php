@@ -3,8 +3,9 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
+$database = "todo";
 
-$conn = new mysqli($servername, $username, $password);
+$conn = new mysqli($servername, $username, $password, $database);
 
 // check connection
 
