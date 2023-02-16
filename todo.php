@@ -19,7 +19,7 @@
     <h6 class="card-subtitle mb-2 text-muted">CRUD Table</h6>
 
     <a class="btn btn-primary" href="insert-remove/insert-task.php">Add to List </a>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <p class="card-text">Add Task to the list</p>
   <table>
   <tr>
     <th>Todo</th>
