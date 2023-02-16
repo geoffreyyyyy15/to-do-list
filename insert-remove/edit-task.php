@@ -26,13 +26,18 @@ $taskG = $_GET['task'];
     <div class="input-group mb-3">
 
   <input type="text" class="form-control" placeholder="Edit Task" aria-label="Username" aria-describedby="basic-addon1" name="task" value="<?php echo $taskG; ?>">
+
+  
+  <div class="input-group mb-3">
   <input type="submit" class="btn btn-primary" value="Update" name="edit">
+  <a href="../todo.php" class="btn btn-warning">Back</a>
+  </div>
   </form>
 </div>
      
   </div>
 
-</div>
+</div></div></center>
 <?php
 $task_id = $_GET['taskId'];
 
@@ -58,7 +63,7 @@ if(isset($_POST['edit'])) {
 
 ?>
 
-</div></center>
+
 </body>
 </html>
 
