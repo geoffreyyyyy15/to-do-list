@@ -15,28 +15,6 @@ include("../config.php");
     <link href="style.css?v=7" rel="stylesheet">
 </head>
 <body>
-    <style>
-        .container {
-            margin: 50px;
-            align-items: center;
-            justify-content: center;
-        }
-        table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
-
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
-
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
-    </style>
 <center><div class="container">
 <div class="card" style="width: 18rem;">
   <div class="card-body">
@@ -57,8 +35,8 @@ tr:nth-child(even) {
 <?php
 
 class AddList {
-  public function insert($tablename, $task) {
-      $insert = "INSERT INTO " .$tablename ." (task) VALUES ('$task')";
+  public function insert($tablename, $column_name , $task) {
+      $insert = "INSERT INTO " .$tablename ."  ($column_name) VALUES ('$task')";
       return $insert;
   }
 }
@@ -66,8 +44,9 @@ class AddList {
 if(isset($_POST['add'])) {
     $task = $_POST['task'];
     $addList = new AddList();
-    $query = $addList->insert("todo", $task);
-    $insertTask = mysqli_query($conn, $query);
+    $query = $addList->insert("todo", "task", $task);
+    $conn->query($query);
+   
 }
 
 
