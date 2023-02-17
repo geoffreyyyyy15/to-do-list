@@ -1,3 +1,57 @@
+<?php
+    include('config.php');
+
+    // class Task {
+    //   protected $connection;
+    //   protected $table_name;
+
+    //     public function __construct($connection, $table_name)
+    //     {
+    //       $this->connection = $connection;
+    //       $this->table_name = $table_name;
+    //     }
+
+    //     public function all()  
+    //     {  
+    //       $query = "SELECT * FROM " . $this->table_name;
+    //       $result =  $this->connection->query($query);
+    //       return mysqli_fetch_array($result);
+    //     }
+    // }
+   
+      
+    // $tasks = new Task($conn, 'todo');
+    // $rows = $tasks->all();
+
+    // // foreach ($rows as $row) {
+    // //   var_dump($row);
+    // //   echo '<br>';
+    // // }
+    // var_dump($rows);
+
+
+    $query = "SELECT * FROM " . 'todo';
+    $result1 =  $conn->query($query);
+    $result = mysqli_fetch_array($result1);
+      var_dump($result);
+
+
+  //  while($row){
+  //       $task1 = $row['task'];
+  //       $id = $row['task_id'];
+
+
+  //       echo  "
+  //       <tr>
+        
+  //       <td>$task1</td>
+  //       <td><a href='insert-remove/edit-task.php?taskId=$id&task=$task1' class='btn btn-success'>Edit</a> | <a href='insert-remove/remove-task.php?id=$id' class='btn btn-danger'>Remove</a></td>
+        
+  //       </tr>
+  //       ";
+  //  }
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -25,56 +79,7 @@
     <th>Todo</th>
     <th>Edit / Remove</th>
     
-  </tr>
-  
- 
-   
- 
-    <?php
-    include('config.php');
-  
-    
-    class RetrieveInfo {
-        public function select($table_name)  
-        {  
-          $c = "SELECT * FROM " . $table_name;
-          return $c;
-        }
-   
-    }
-   
-  
-      
-    $retrive = new RetrieveInfo();
-    $getId = new RetrieveInfo();
 
-    $query =  $retrive->select("todo");
-    $result =  $conn->query($query);
-
-   while($row = mysqli_fetch_array($result)){
-        $task1 = $row['task'];
-        $id = $row['task_id'];
-
-
-        echo  "
-        <tr>
-        
-        <td>$task1</td>
-        <td><a href='insert-remove/edit-task.php?taskId=$id&task=$task1' class='btn btn-success'>Edit</a> | <a href='insert-remove/remove-task.php?id=$id' class='btn btn-danger'>Remove</a></td>
-        
-        </tr>
-        ";
-   }
-
-
-
-    
-
-
-    
-
-    ?>
- </tr>
 </table>
   </div>
 
